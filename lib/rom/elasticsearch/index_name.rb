@@ -34,9 +34,8 @@ module ROM
 
       # @api private
       def to_sym
-        name
+        types ? type : name
       end
     end
-
   end
 end

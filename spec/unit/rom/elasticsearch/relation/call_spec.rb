@@ -17,6 +17,6 @@ RSpec.describe ROM::Elasticsearch::Relation, '#call' do
 
     expect(result).to match_array([{ id: 1, name: 'Jane' }, { id: 2, name: 'John' }])
 
-    expect(result.total_hits).to be(2)
+    expect(result.total_hits['value']).to be(2)
   end
 end

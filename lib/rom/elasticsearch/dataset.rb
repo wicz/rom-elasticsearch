@@ -11,8 +11,8 @@ module ROM
     # Elasticsearch dataset
     #
     # Uses an elasticsearch client object provided by the gateway, holds basic
-    # params with information about index name and type, and optional body for
-    # additional queries.
+    # params with information about index name, and optional body for additional
+    # queries.
     #
     # Dataset object also provide meta information about indices, like custom
     # settings and mappings.
@@ -96,7 +96,7 @@ module ROM
       #
       # @api public
       def mappings
-        client.indices.get_mapping[index.to_s]['mappings'][type.to_s]
+        client.indices.get_mapping[index.to_s]['mappings']
       end
 
       # Delete everything matching configured params and/or body
@@ -148,15 +148,6 @@ module ROM
       # @api public
       def map(&block)
         to_a.map(&block)
-      end
-
-      # Return configured type from params
-      #
-      # @return [Symbol]
-      #
-      # @api public
-      def type
-        params[:type]
       end
 
       # Return configured index name
