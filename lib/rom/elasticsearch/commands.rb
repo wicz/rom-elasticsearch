@@ -16,13 +16,13 @@ module ROM
         def execute(attributes)
           tuple = input[attributes]
 
-          result =
-            if _id
-              dataset.params(id: tuple.fetch(_id)).put(tuple)
-            else
-              dataset.put(tuple)
-            end
-          [relation.get(result['_id']).one]
+          if _id
+            dataset.params(id: tuple.fetch(_id)).put(tuple)
+          else
+            dataset.put(tuple)
+          end
+
+          [tuple]
         end
 
         private
